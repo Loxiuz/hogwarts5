@@ -3,6 +3,7 @@ package dk.kea.dat3js.hogwarts5.students;
 import dk.kea.dat3js.hogwarts5.house.House;
 import jakarta.persistence.*;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
@@ -45,7 +46,7 @@ public class Student {
   }
 
   public void setFirstName(String firstName) {
-    this.firstName = firstName;
+    this.firstName = capitalize(firstName);
   }
 
   public String getMiddleName() {
@@ -53,7 +54,14 @@ public class Student {
   }
 
   public void setMiddleName(String middleName) {
-    this.middleName = middleName;
+    if (middleName != null && middleName.contains(" ")) {
+      String[] names = middleName.split(" ");
+      String[] capitalizedNames = Arrays.stream(names).map(this::capitalize).toArray(String[]::new);
+      this.middleName = String.join(" ", capitalizedNames);
+    }
+    else {
+      this.middleName = capitalize(middleName);
+    }
   }
 
   public String getLastName() {
@@ -61,7 +69,7 @@ public class Student {
   }
 
   public void setLastName(String lastName) {
-    this.lastName = lastName;
+    this.lastName = capitalize(lastName);
   }
 
   public House getHouse() {
@@ -80,6 +88,29 @@ public class Student {
     this.schoolYear = schoolYear;
   }
 
+  public String getFullName(){
+    return firstName + " " + (middleName !=null ? middleName + " " : "") + lastName;
+  }
+
+  public void setFullName(String fullName){
+    if(fullName != null && !fullName.isEmpty()){
+      int firstSpace = fullName.indexOf(' ');
+      int lastSpace = fullName.lastIndexOf(' ');
+
+      setFirstName(fullName.substring(0, firstSpace));
+      if (firstSpace != lastSpace) {
+        setMiddleName(fullName.substring(firstSpace + 1, lastSpace));
+      } else {
+        setMiddleName(null);
+      }
+      setLastName(fullName.substring(lastSpace + 1));
+    } else {
+      setFirstName(null);
+      setMiddleName(null);
+      setLastName(null);
+    }
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -93,4 +124,17 @@ public class Student {
     return Objects.hash(getFirstName(), getMiddleName(), getLastName(), getHouse().getName());
   }
 
+  /************************
+  * Capitalization Feature
+  ************************/
+
+  public String capitalize(String name){
+    if(name != null && !name.isEmpty()){
+      String firstPart = name.substring(0, 1).toUpperCase();
+      String lastPart = name.substring(1).toLowerCase();
+      return firstPart + lastPart;
+    } else {
+      return null;
+    }
+  }
 }
