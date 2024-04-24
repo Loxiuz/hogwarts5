@@ -1,5 +1,6 @@
 package dk.kea.dat3js.hogwarts5.students;
 
+import dk.kea.dat3js.hogwarts5.PersonWithNames;
 import dk.kea.dat3js.hogwarts5.house.House;
 import jakarta.persistence.*;
 
@@ -7,7 +8,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
-public class Student {
+public class Student implements PersonWithNames {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
@@ -92,25 +93,6 @@ public class Student {
     return firstName + " " + (middleName !=null ? middleName + " " : "") + lastName;
   }
 
-  public void setFullName(String fullName){
-    if(fullName != null && !fullName.isEmpty()){
-      int firstSpace = fullName.indexOf(' ');
-      int lastSpace = fullName.lastIndexOf(' ');
-
-      setFirstName(fullName.substring(0, firstSpace));
-      if (firstSpace != lastSpace) {
-        setMiddleName(fullName.substring(firstSpace + 1, lastSpace));
-      } else {
-        setMiddleName(null);
-      }
-      setLastName(fullName.substring(lastSpace + 1));
-    } else {
-      setFirstName(null);
-      setMiddleName(null);
-      setLastName(null);
-    }
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -122,19 +104,5 @@ public class Student {
   @Override
   public int hashCode() {
     return Objects.hash(getFirstName(), getMiddleName(), getLastName(), getHouse().getName());
-  }
-
-  /************************
-  * Capitalization Feature
-  ************************/
-
-  public String capitalize(String name){
-    if(name != null && !name.isEmpty()){
-      String firstPart = name.substring(0, 1).toUpperCase();
-      String lastPart = name.substring(1).toLowerCase();
-      return firstPart + lastPart;
-    } else {
-      return null;
-    }
   }
 }
