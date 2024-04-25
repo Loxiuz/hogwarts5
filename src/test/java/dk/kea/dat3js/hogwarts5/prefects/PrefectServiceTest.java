@@ -21,22 +21,62 @@ class PrefectServiceTest {
     PrefectService prefectService;
 
     @Test
-    void findAll() {
+    void findAll() { //Prioritize
     }
 
     @Test
-    void findByStudentId() {
+    void findByStudentId() { //Prioritize
     }
 
     @Test
-    void findAllByHouseName() {
+    void findStudentByIdWithNull() {
     }
 
     @Test
-    void makePrefect() {
+    void findStudentByIdWithZero() {
     }
 
     @Test
-    void deleteByStudentId() {
+    void findStudentByIdWithNegativeInteger() {
+    }
+
+    @Test
+    void findAllByHouseName() { //Prioritize
+    }
+
+    @Test
+    void findAllByHouseNameWithNull() {
+    }
+
+    @Test
+    void findAllByHouseNameWithEmptyString() {
+    }
+
+    @Test
+    void makePrefect() { //Prioritize
+    }
+
+    @Test
+    void makePrefectWithNull() {
+    }
+
+    @Test
+    void makePrefectWithEmptyRequestBody() {
+    }
+
+    @Test
+    void deleteByStudentId() { //Prioritize
+    }
+
+    @Test
+    void deleteByStudentIdWithNull() {
+    }
+
+    @Test
+    void deleteByStudentIdWithZero() {
+    }
+
+    @Test
+    void deleteByStudentIdWithNegativeInteger() {
     }
 }
