@@ -15,8 +15,10 @@ public class Student implements PersonWithNames {
   private String firstName;
   private String middleName;
   private String lastName;
+  private String gender;
   @ManyToOne
   private House house;
+  private Boolean prefect;
   private Integer schoolYear; // 1-7
 
   public Student() {
@@ -73,6 +75,10 @@ public class Student implements PersonWithNames {
     this.lastName = capitalize(lastName);
   }
 
+  public String getGender() {return gender;}
+
+  public void setGender(String gender) {this.gender = gender;}
+
   public House getHouse() {
     return house;
   }
@@ -80,6 +86,10 @@ public class Student implements PersonWithNames {
   public void setHouse(House house) {
     this.house = house;
   }
+
+  public Boolean isPrefect() {return prefect;}
+
+  public void setPrefect(Boolean prefect) {this.prefect = prefect;}
 
   public Integer getSchoolYear() {
     return schoolYear;
