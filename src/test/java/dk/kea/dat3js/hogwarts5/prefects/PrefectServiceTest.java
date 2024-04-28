@@ -1,6 +1,5 @@
 package dk.kea.dat3js.hogwarts5.prefects;
 
-import dk.kea.dat3js.hogwarts5.house.HouseRepository;
 import dk.kea.dat3js.hogwarts5.house.HouseService;
 import dk.kea.dat3js.hogwarts5.students.Student;
 import dk.kea.dat3js.hogwarts5.students.StudentRepository;
@@ -18,7 +17,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static reactor.core.publisher.Mono.when;
 
 @ExtendWith(MockitoExtension.class)
 class PrefectServiceTest {
