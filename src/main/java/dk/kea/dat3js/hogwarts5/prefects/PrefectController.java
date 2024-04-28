@@ -2,6 +2,7 @@ package dk.kea.dat3js.hogwarts5.prefects;
 
 import dk.kea.dat3js.hogwarts5.students.StudentRequestDTO;
 import dk.kea.dat3js.hogwarts5.students.StudentResponseDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,13 @@ public class PrefectController {
 
     @GetMapping("/{studentId}")
     public ResponseEntity<StudentResponseDTO> getPrefectByStudentId(@PathVariable int studentId) {
-        return ResponseEntity.of(prefectService.findByStudentId(studentId));
+        Optional<StudentResponseDTO> optionalStudent = prefectService.findByStudentId(studentId);
+
+        if (optionalStudent.isPresent()) {
+            return ResponseEntity.ok(optionalStudent.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @GetMapping("/house/{houseName}")

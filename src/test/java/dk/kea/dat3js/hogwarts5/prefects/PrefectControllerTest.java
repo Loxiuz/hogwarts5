@@ -27,21 +27,21 @@ class PrefectControllerTest {
 
     @BeforeEach
     void setUp() {
-        StudentRequestDTO harryDTO = new StudentRequestDTO(1, "Harry", "James", "Potter", "Harry James Potter", "male", null, true, 5);
-        StudentRequestDTO hermioneDTO = new StudentRequestDTO(2, "Hermione", "Jean", "Granger", "Hermione Jean Granger", "female", null, true, 5);
-        StudentRequestDTO ronDTO = new StudentRequestDTO(3, "Ron", "Bilius", "Weasley", "Ron Bilius Weasley", "male", null, false, 5);
+        StudentRequestDTO harryDTO = new StudentRequestDTO(-1, "Harry", "James", "Potter", "Harry James Potter", "male", null, true, 5);
+        StudentRequestDTO hermioneDTO = new StudentRequestDTO(-1, "Hermione", "Jean", "Granger", "Hermione Jean Granger", "female", null, true, 5);
+        StudentRequestDTO ronDTO = new StudentRequestDTO(-1, "Ron", "Bilius", "Weasley", "Ron Bilius Weasley", "male", null, false, 5);
 
-        StudentRequestDTO dracoDTO = new StudentRequestDTO(4, "Draco", "", "Malfoy", "Draco Malfoy", "male", null, true, 5);
-        StudentRequestDTO pansyDTO = new StudentRequestDTO(5, "Pansy", "", "Parkinson", "Pansy Parkinson", "female", null, true, 5);
-        StudentRequestDTO blaiseDTO = new StudentRequestDTO(6, "Blaise", "", "Zabini", "Blaise Zabini", "male", null, false, 5);
+        StudentRequestDTO dracoDTO = new StudentRequestDTO(-1, "Draco", "", "Malfoy", "Draco Malfoy", "male", null, true, 5);
+        StudentRequestDTO pansyDTO = new StudentRequestDTO(-1, "Pansy", "", "Parkinson", "Pansy Parkinson", "female", null, true, 5);
+        StudentRequestDTO blaiseDTO = new StudentRequestDTO(-1, "Blaise", "", "Zabini", "Blaise Zabini", "male", null, false, 5);
 
-        StudentRequestDTO cedricDTO = new StudentRequestDTO(7, "Cedric", "", "Diggory", "Cedric Diggory", "male", null, true, 6);
-        StudentRequestDTO hannahDTO = new StudentRequestDTO(8, "Hannah", "", "Abbott", "Hannah Abbott", "female", null, true, 5);
-        StudentRequestDTO justinDTO = new StudentRequestDTO(9, "Justin", "", "Finch-Fletchley", "Justin Finch-Fletchley", "male", null, false, 5);
+        StudentRequestDTO cedricDTO = new StudentRequestDTO(-1, "Cedric", "", "Diggory", "Cedric Diggory", "male", null, true, 6);
+        StudentRequestDTO hannahDTO = new StudentRequestDTO(-1, "Hannah", "", "Abbott", "Hannah Abbott", "female", null, true, 5);
+        StudentRequestDTO justinDTO = new StudentRequestDTO(-1, "Justin", "", "Finch-Fletchley", "Justin Finch-Fletchley", "male", null, false, 5);
 
-        StudentRequestDTO michaelDTO = new StudentRequestDTO(10, "Michael", "", "Corner", "Michael Corner", "male", null, true, 5);
-        StudentRequestDTO choDTO = new StudentRequestDTO(11, "Cho", "", "Chang", "Cho Chang", "female", null, true, 6);
-        StudentRequestDTO padmaDTO = new StudentRequestDTO(12, "Padma", "", "Patil", "Padma Patil", "female", null, false, 5);
+        StudentRequestDTO michaelDTO = new StudentRequestDTO(-1, "Michael", "", "Corner", "Michael Corner", "male", null, true, 5);
+        StudentRequestDTO choDTO = new StudentRequestDTO(-1, "Cho", "", "Chang", "Cho Chang", "female", null, true, 6);
+        StudentRequestDTO padmaDTO = new StudentRequestDTO(-1, "Padma", "", "Patil", "Padma Patil", "female", null, false, 5);
 
         studentService.save(harryDTO);
         studentService.save(hermioneDTO);

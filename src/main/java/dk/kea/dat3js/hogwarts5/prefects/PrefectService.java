@@ -1,12 +1,8 @@
 package dk.kea.dat3js.hogwarts5.prefects;
 
-import dk.kea.dat3js.hogwarts5.house.HouseRepository;
-import dk.kea.dat3js.hogwarts5.students.StudentRepository;
-import dk.kea.dat3js.hogwarts5.students.StudentRequestDTO;
-import dk.kea.dat3js.hogwarts5.students.StudentResponseDTO;
+import dk.kea.dat3js.hogwarts5.students.*;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,17 +10,20 @@ import java.util.Optional;
 public class PrefectService {
 
     private final StudentRepository studentRepository;
-    private final HouseRepository houseRepository;
+    private final StudentService studentService;
 
-    public PrefectService(StudentRepository studentRepository , HouseRepository houseRepository) {
+    public PrefectService(StudentRepository studentRepository, StudentService studentService) {
         this.studentRepository = studentRepository;
-        this.houseRepository = houseRepository;
+        this.studentService = studentService;
     }
 
-    public List<StudentResponseDTO> findAll(){return Collections.emptyList();}
+    public List<StudentResponseDTO> findAll(){
+        List<Student> students = studentRepository.findAllPrefect();
+        return students.stream().map(studentService::toDTO).toList();
+    }
 
     public Optional<StudentResponseDTO> findByStudentId(int studentId){
-        return Optional.empty();
+        return Optional.of(studentService.toDTO(studentRepository.findPrefectByStudentId(studentId)));
     }
 
     public Optional<StudentResponseDTO> findAllByHouseName(String houseName){
