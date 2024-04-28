@@ -31,8 +31,8 @@ public class PrefectService {
         return Optional.empty();
     }
 
-    public StudentResponseDTO makePrefect(StudentRequestDTO request){
-        return new StudentResponseDTO(0, "", "", "", "", "", 0);
+    public Optional<StudentResponseDTO> makePrefect(StudentRequestDTO request){
+        return Optional.of(new StudentResponseDTO(0, "", "", "","", "", "", false,0));
     }
 
     public Optional<StudentResponseDTO> deleteByStudentId(int studentId){

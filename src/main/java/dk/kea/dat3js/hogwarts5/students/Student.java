@@ -24,15 +24,17 @@ public class Student implements PersonWithNames {
   public Student() {
   }
 
-  public Student(String firstName, String lastName, House house, int schoolYear) {
-    this(firstName, null, lastName, house, schoolYear);
+  public Student(String firstName, String lastName, String gender, House house, Boolean prefect, int schoolYear) {
+    this(firstName, null, lastName, gender, house, prefect, schoolYear);
   }
 
-  public Student(String firstName, String middleName, String lastName, House house, int schoolYear) {
+  public Student(String firstName, String middleName, String lastName, String gender, House house, Boolean prefect, int schoolYear) {
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
+    this.gender = gender;
     this.house = house;
+    this.prefect = prefect;
     this.schoolYear = schoolYear;
   }
 

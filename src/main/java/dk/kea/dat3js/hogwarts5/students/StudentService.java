@@ -24,8 +24,8 @@ public class StudentService {
     return studentRepository.findById(id).map(this::toDTO);
   }
 
-  public StudentResponseDTO save(StudentRequestDTO student) {
-    return toDTO(studentRepository.save(fromDTO(student)));
+  public Optional<StudentResponseDTO> save(StudentRequestDTO student) {
+    return Optional.of(toDTO(studentRepository.save(fromDTO(student))));
   }
 
   public Optional<StudentResponseDTO> updateIfExists(int id, StudentRequestDTO student) {
@@ -71,14 +71,16 @@ public class StudentService {
     return existingStudent;
   }
 
-  private StudentResponseDTO toDTO(Student studentEntity) {
+  public StudentResponseDTO toDTO(Student studentEntity) {
     StudentResponseDTO dto = new StudentResponseDTO(
         studentEntity.getId(),
         studentEntity.getFirstName(),
         studentEntity.getMiddleName(),
         studentEntity.getLastName(),
         studentEntity.getFullName(),
+        studentEntity.getGender(),
         studentEntity.getHouse().getName(),
+        studentEntity.isPrefect(),
         studentEntity.getSchoolYear()
     );
 
@@ -90,7 +92,9 @@ public class StudentService {
         studentDTO.firstName(),
         studentDTO.middleName(),
         studentDTO.lastName(),
+        studentDTO.gender(),
         houseService.findById(studentDTO.house()).orElseThrow(),
+        studentDTO.prefect(),
         studentDTO.schoolYear()
     );
 

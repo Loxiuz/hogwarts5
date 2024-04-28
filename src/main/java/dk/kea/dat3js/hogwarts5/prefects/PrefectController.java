@@ -35,8 +35,8 @@ public class PrefectController {
     }
 
     @PostMapping
-    public StudentResponseDTO setPrefect(@RequestBody StudentRequestDTO request){
-        return prefectService.makePrefect(request);
+    public ResponseEntity<StudentResponseDTO> setPrefect(@RequestBody StudentRequestDTO request){
+        return ResponseEntity.of(prefectService.makePrefect(request));
     }
 
     @DeleteMapping("/{studentId}")
